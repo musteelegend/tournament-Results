@@ -22,7 +22,7 @@ Before you can run your code or create your tables, you'll need to use the creat
 
 Then you can connect psql to your new database and create your tables from the statements you've written in tournament.sql. You can do this in either of two ways:
 
-Paste each statement in to psql.
+ * Paste each statement in to psql.
  * Use the command \i tournament.sql to import the whole file into psql at once.
- * To deploy this app in google app engine load this program in google app engine and click on deploy.
 
+Then run the tests from the command line, using the command python tournament_test.py. If it runs correctly, the output "Success! All tests pass!" will be displayed.
