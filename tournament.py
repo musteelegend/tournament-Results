@@ -15,7 +15,7 @@ def deleteMatches():
     """Remove all the match records from the database."""
     db = connect()
     cursor = db.cursor()
-    query = "DELETE FROM MATCHES";
+    query = "DELETE FROM MATCHES;"
     cursor.execute(query)
     db.commit()
     db.close()
@@ -25,7 +25,7 @@ def deletePlayers():
     """Remove all the player records from the database."""
     db = connect()
     cursor = db.cursor()
-    query = "DELETE FROM PLAYERS";
+    query = "DELETE FROM PLAYERS;"
     cursor.execute(query)
     db.commit()
     db.close()
@@ -34,7 +34,7 @@ def deletePlayers():
 def countPlayers():
     """Returns the number of players currently registered."""
     db = connect()
-    cursor= db.cursor()
+    cursor = db.cursor()
     query = "SELECT count(*) AS total FROM PLAYERS"
     cursor.execute(query)
     total = cursor.fetchone()
@@ -53,7 +53,7 @@ def registerPlayer(name):
     """
     db = connect()
     cursor = db.cursor()
-    query = "INSERT INTO players (name) VALUES ('%s')"% name
+    query = "INSERT INTO players (name) VALUES ('%s')" % name
     cursor.execute(query)
     db.commit()
     db.close()
@@ -62,8 +62,8 @@ def registerPlayer(name):
 def playerStandings():
     """Returns a list of the players and their win records, sorted by wins.
 
-    The first entry in the list should be the player in first place, or a player
-    tied for first place if there is currently a tie.
+    The first entry in the list should be the player in first place, or a
+    player tied for first place if there is currently a tie.
 
     Returns:
       A list of tuples, each of which contains (id, name, wins, matches):
@@ -74,7 +74,7 @@ def playerStandings():
     """
     db = connect()
     cursor = db.cursor()
-    query =  ("SELECT * FROM standings;")
+    query = ("SELECT * FROM standings;")
     cursor.execute(query)
     matches = cursor.fetchall()
     db.commit()
@@ -91,7 +91,8 @@ def reportMatch(winner, loser):
     """
     db = connect()
     cursor = db.cursor()
-    query = ("INSERT INTO matches (match_id, winner, loser) VALUES (default, %s, %s);")
+    query = ("INSERT INTO matches (match_id, winner, loser) \
+             VALUES (default, %s, %s);")
     cursor.execute(query, (winner, loser,))
     db.commit()
     db.close()
@@ -125,5 +126,3 @@ def swissPairings():
                 pair = (id1, name1, id2, name2)
                 pairings.append(pair)
     return pairings
-
-
